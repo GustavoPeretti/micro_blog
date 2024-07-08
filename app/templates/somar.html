@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>micro_blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
+</head>
+<body>
+    <header class="container">
+      <nav>
+        <ul>
+          <li><strong>micro_blog</strong></li>
+        </ul>
+        <ul>
+          <li><a href="/">Início</a></li>
+          <li><a href="#">Perfil</a></li>
+          <li><a href="#">Acesso</a></li>
+        </ul>
+      </nav>
+  </header>
+  <main class="container">
+    <section>
+        <h2>Soma</h2>
+        <form>
+            <fieldset>
+              <label>Número inteiro 1<input value="{{dados['x']}}" name="n1" placeholder="Número inteiro 1" /></label>
+              <label>Número inteiro 1<input value="{{dados['y']}}" name="n2" placeholder="Número inteiro 2" /></label>
+            </fieldset>
+          
+            <input id="botao" type="submit"/>
+          </form>
+        <p>O resultado da soma de {{ dados['x'] }} e {{ dados['y'] }} é {{ dados['x'] + dados['y'] }}.</p>
+    </section>
+  </main>
+  <script>
+    document.querySelector('#botao').addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.pathname=`/soma/${document.getElementsByName('n1')[0].value}/${document.getElementsByName('n2')[0].value}`;
+    })
+  </script>
+</body>
+</html>
