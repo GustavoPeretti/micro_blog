@@ -1,30 +1,30 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>micro_blog</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"/>
-</head>
-<body>
-    <header class="container">
-      <nav>
-        <ul>
-          <li><strong>micro_blog</strong></li>
-        </ul>
-        <ul>
-          <li><a href="/">Início</a></li>
-          <li><a href="#">Perfil</a></li>
-          <li><a href="#">Acesso</a></li>
-        </ul>
-      </nav>
-  </header>
-  <main class="container">
-    <section>
-      <h2>Boas-vindas</h2>
-      <p>Olá, {{ dados['nome'] }}!</p>
-      <p>Seu e-mail é <a href="mailto:{{ dados['email'] }}">{{ dados['email'] }}</a>.</p>
-    </section>
-  </main>
-</body>
-</html>
+{% extends 'template.html' %}
+
+{% block body %}
+<section>
+  <h2>Boas-vindas</h2>
+  <p>Olá, {{ dados['usuario'].nome }}!</p>
+  <p>Sua descrição é "{{ dados['usuario'].descricao }}".</p>
+</section>
+<section>
+  <h3>Usuários</h3>
+  <ul>
+    {% for usuario in dados['usuarios'] %}
+      <article>
+        <h4>
+          {% if usuario.status %}
+
+          <ins>{{ usuario.nome }}</ins>
+
+          {% else %}
+
+          <del>{{ usuario.nome }}</del>
+
+          {% endif %}
+        </h4>
+        <p>{{ usuario.descricao }}</p>
+      </article>
+    {% endfor %}
+  </ul>
+</section>
+{% endblock %}
