@@ -3,23 +3,23 @@
 {% block body %}
 <section>
   <h2>Boas-vindas</h2>
-  <p>Olá, {{ dados['usuario'].nome }}!</p>
-  <p>Sua descrição é "{{ dados['usuario'].descricao }}".</p>
+  {% if session['usuario'] and session['descricao'] %}
+  <p>Olá, {{ session['usuario'] }}!</p>
+  <p>Sua descrição é "{{ session['descricao'] }}".</p>
+  {% else %}
+  <p>Você precisa fazer <a href="{{url_for('login')}}">login</a>.</p>
+  {% endif %}
 </section>
 <section>
   <h3>Usuários</h3>
   <ul>
-    {% for usuario in dados['usuarios'] %}
+    {% for usuario in usuarios %}
       <article>
         <h4>
           {% if usuario.status %}
-
           <ins>{{ usuario.nome }}</ins>
-
           {% else %}
-
           <del>{{ usuario.nome }}</del>
-
           {% endif %}
         </h4>
         <p>{{ usuario.descricao }}</p>

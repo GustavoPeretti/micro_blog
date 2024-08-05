@@ -1,0 +1,14 @@
+{% extends 'template.html' %}
+
+{% block body %}
+<section>
+  <h2>Login</h2>
+  <form method="POST" action="{{url_for('login')}}">
+    <fieldset>
+      <label>Nome de usuário<input required name="usuario" placeholder="Nome de usuário" autocomplete="username"/></label>
+      <label>Descrição<input required type="text" name="descricao" placeholder="Descrição"/></label>
+    </fieldset>
+    <input type="submit" value="Entrar"/>
+  </form>
+</section>
+{% endblock %}
