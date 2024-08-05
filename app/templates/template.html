@@ -13,9 +13,9 @@
           <li><strong>micro_blog</strong></li>
         </ul>
         <ul>
-          <li><a href="/">Início</a></li>
-          <li><a href="/contatos">Contatos</a></li>
-          <li><a href="/login">Login</a></li>
+          <li><a href="{{ url_for('index') }}">Início</a></li>
+          <li><a href="{{ url_for('contatos') }}">Contatos</a></li>
+          <li><a href="{{ url_for('login') }}">Login</a></li>
         </ul>
       </nav>
   </header>

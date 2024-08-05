@@ -22,9 +22,11 @@ def login():
     if request.method == 'POST':
         session['usuario'] = request.form.get('usuario')
         session['descricao'] = request.form.get('descricao')
+        session['estado'] = request.form.get('estado')
+        session['escolaridade'] = request.form.get('escolaridade')
         return redirect(url_for('index'))
 
 @app.route('/contatos', methods=['GET'])
-def contato():
+def contatos():
     return render_template('contatos.html', contatos=[])
 
