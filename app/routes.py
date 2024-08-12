@@ -21,13 +21,13 @@ def login():
         return render_template('login.html')
     if request.method == 'POST':
         if len(request.form.get('usuario')) == 1:
-            flash('Nome de usuário deve ter no mínimo 2 caracteres.')
+            flash('Nome de usuário deve ter no mínimo 2 caracteres.', 'erro')
             return redirect(url_for('login'))
         session['usuario'] = request.form.get('usuario')
         session['descricao'] = request.form.get('descricao')
+        flash('Usuário autenticado com sucesso.', 'aviso')
         return redirect(url_for('index'))
 
 @app.route('/contatos', methods=['GET'])
 def contatos():
     return render_template('contatos.html', contatos=[])
-
