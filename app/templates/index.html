@@ -3,11 +3,9 @@
 {% block body %}
 <section>
   <h2>Boas-vindas</h2>
-  {% if session['usuario'] and session['descricao'] and session['estado'] and session['escolaridade'] %}
+  {% if session['usuario'] and session['descricao'] %}
   <p>Olá, {{ session['usuario'] }}!</p>
   <p>Sua descrição é "{{ session['descricao'] }}".</p>
-  <p>Localização: {{ session['estado'] }}</p>
-  <p>Escolaridade: {{ session['escolaridade'] }}</p>
   {% else %}
   <p>Você precisa fazer <a href="{{url_for('login')}}">login</a>.</p>
   {% endif %}

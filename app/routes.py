@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template, request, redirect, url_for, session
+from flask import render_template, request, redirect, url_for, session, flash
 
 class Usuario:
     def __init__(self, nome, descricao, status):
@@ -20,10 +20,11 @@ def login():
     if request.method == 'GET':
         return render_template('login.html')
     if request.method == 'POST':
+        if len(request.form.get('usuario')) == 1:
+            flash('Nome de usuário deve ter no mínimo 2 caracteres.')
+            return redirect(url_for('login'))
         session['usuario'] = request.form.get('usuario')
         session['descricao'] = request.form.get('descricao')
-        session['estado'] = request.form.get('estado')
-        session['escolaridade'] = request.form.get('escolaridade')
         return redirect(url_for('index'))
 
 @app.route('/contatos', methods=['GET'])
